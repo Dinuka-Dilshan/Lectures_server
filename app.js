@@ -13,7 +13,7 @@ app.use(cors());
 
 app.get("/", async (req, res, next) => {
   try {
-    const subjectData = await Subject.find();
+    const subjectData = await Subject.find().select({_id:1,src:1,name:1});
     res.json(subjectData);
   } catch (error) {
     res.status(500).json({ error });
